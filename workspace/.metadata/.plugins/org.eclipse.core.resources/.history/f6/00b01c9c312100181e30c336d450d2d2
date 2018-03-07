@@ -1,0 +1,20 @@
+package com.qa.form;
+
+import org.mule.api.MuleMessage;
+import org.mule.api.transformer.TransformerException;
+import org.mule.transformer.AbstractMessageTransformer;
+
+import abc.qac.com.ProcessMessage;
+
+public class formRequest extends AbstractMessageTransformer {
+
+	ProcessMessage sendMessage = new ProcessMessage();
+	
+	@Override
+	public Object transformMessage(MuleMessage message, String outputEncoding) throws TransformerException {
+		// TODO Auto-generated method stub
+		sendMessage.messageProcess(message);
+		return message;
+	}
+
+}

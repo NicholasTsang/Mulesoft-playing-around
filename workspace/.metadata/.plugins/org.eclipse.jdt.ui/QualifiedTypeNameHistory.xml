@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="org.mule.api.MuleMessage"/>
+<fullyQualifiedTypeName name="org.mule.transformer.AbstractMessageTransformer"/>
+<fullyQualifiedTypeName name="org.mule.api.transport.PropertyScope"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+ 
+   <title>Login Form Submit Button</title>
+   
+ </head>
+ 
+ <body>
+ 
+   <form method="post" action="">
+ 
+     <p><label for="username">Your User name:</label> <div>
+     <input type="text" id="username" name="username" /> </div> </p> 
+     
+     <p><label for="username">Your Email:</label> 
+     <div> <input type="text" id="email" name="email" /> </div> </p> 
+     
+     <p><label for="password">Your Password:</label> 
+     <div> <input type="password" id="password" name="password" /> </div> </p> 
+     
+     <p><input type="submit" name="login" value="Log In" /></p>
+ 
+   </form>
+ 
+ </body>
+ </html>

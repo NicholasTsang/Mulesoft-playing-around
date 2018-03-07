@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+    <http:listener-config name="HTTP_Listener_Configuration3" host="localhost" port="5003" doc:name="HTTP Listener Configuration"/>
+    <flow name="dataentryFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration2" path="/" doc:name="dataEntry"/>
+        <logger message="before insert Data" level="INFO" doc:name="Logger"/>
+        <parse-template location="C:\Users\Admin\AnypointStudio\workspace\database\src\main\html-app\Features\DataEntry.html" doc:name="Parse Template"/>
+        <set-property propertyName="content-type" value="text/html" doc:name="Property"/>
+        <logger message="after insert data " level="INFO" doc:name="Logger"/>
+    </flow>
+</mule>

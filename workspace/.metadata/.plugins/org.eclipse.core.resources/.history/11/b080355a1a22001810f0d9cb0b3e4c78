@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html >
+ <head>
+  
+   <title>Data Entry</title>
+   
+ </head>
+ 
+ <body>
+ 
+   <form method="POST" action="http://localhost:5004">
+ 
+     <p><label for="id">ID:</label> <div>
+     <input type="text" id="id" name="id" /> </div> </p> 
+     
+     <p><label for="name">Your Name:</label> 
+     <div> <input type="text" id="name" name="name" /> </div> </p> 
+     
+     <p><label for="address">Your Address:</label> 
+     <div> <input type="text" id="address" name="address" /> </div> </p> 
+     
+     <p><label for="marks">Your Marks:</label> 
+     <div> <input type="text" id="marks" name="marks" /> </div> </p> 
+     
+     <p><input type="submit"  value="Submit" /></p>
+ 
+   </form>
+ 
+ </body>
+ </html>

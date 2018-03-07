@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd">
+    <http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="5010" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config name="HTTP_Listener_Configuration1" host="localhost" port="5011" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config name="HTTP_Listener_Configuration2" host="localhost" port="5012" doc:name="HTTP Listener Configuration"/>
+    <flow name="londoninfoFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/" doc:name="HTTP"/>
+        <set-payload value="{
+	&quot;city&quot;:&quot;london&quot;,
+	&quot;population&quot;:1235,
+	&quot;coordinates:&quot;:123
+}" doc:name="Set Payload"/>
+    </flow>
+    <flow name="manchesterinfoFlow1">
+        <http:listener config-ref="HTTP_Listener_Configuration1" path="/" doc:name="HTTP"/>
+        <set-payload value="{
+	&quot;city&quot;:&quot;manchester&quot;,
+	&quot;population&quot;:1235,
+	&quot;coordinates:&quot;:123
+}" doc:name="Set Payload"/>
+    </flow>
+    <flow name="LAinfoFlow1">
+        <http:listener config-ref="HTTP_Listener_Configuration2" path="/" allowedMethods="GET" doc:name="HTTP"/>
+        <set-payload value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;&lt;flightairmap&gt;&lt;title&gt;FlightAirMap XML Feed&lt;/title&gt;&lt;link&gt;http://real.flightairmap.com&lt;/link&gt;&lt;aircrafts&gt;&lt;aircraft&gt;&lt;id&gt;56396978&lt;/id&gt;&lt;ident&gt;KAL8213&lt;/ident&gt;&lt;registration&gt;HL7623&lt;/registration&gt;&lt;aircraft_icao&gt;B748&lt;/aircraft_icao&gt;&lt;aircraft_name&gt;747-8/747-8 BBJ/BBJ (747-8)&lt;/aircraft_name&gt;&lt;aircraft_manufacturer&gt;BOEING&lt;/aircraft_manufacturer&gt;&lt;airline_name&gt;Korean Air&lt;/airline_name&gt;&lt;airline_icao&gt;KAL&lt;/airline_icao&gt;&lt;airline_iata&gt;KE&lt;/airline_iata&gt;&lt;airline_country&gt;Republic of Korea&lt;/airline_country&gt;&lt;airline_callsign&gt;KOREANAIR&lt;/airline_callsign&gt;&lt;airline_type&gt;passenger&lt;/airline_type&gt;&lt;departure_airport_city&gt;&lt;/departure_airport_city&gt;&lt;departure_airport_country&gt;South Korea&lt;/departure_airport_country&gt;&lt;departure_airport_iata&gt;ICN&lt;/departure_airport_iata&gt;&lt;departure_airport_icao&gt;RKSI&lt;/departure_airport_icao&gt;&lt;departure_airport_latitude&gt;37.4633&lt;/departure_airport_latitude&gt;&lt;departure_airport_longitude&gt;126.44&lt;/departure_airport_longitude&gt;&lt;departure_airport_altitude&gt;23&lt;/departure_airport_altitude&gt;&lt;arrival_airport_city&gt;Los Angeles&lt;/arrival_airport_city&gt;&lt;arrival_airport_country&gt;United States&lt;/arrival_airport_country&gt;&lt;arrival_airport_iata&gt;LAX&lt;/arrival_airport_iata&gt;&lt;arrival_airport_icao&gt;KLAX&lt;/arrival_airport_icao&gt;&lt;arrival_airport_latitude&gt;33.9425&lt;/arrival_airport_latitude&gt;&lt;arrival_airport_longitude&gt;-118.408&lt;/arrival_airport_longitude&gt;&lt;arrival_airport_altitude&gt;128&lt;/arrival_airport_altitude&gt;&lt;latitude&gt;37.4851&lt;/latitude&gt;&lt;longitude&gt;141.862&lt;/longitude&gt;&lt;altitude&gt;330&lt;/altitude&gt;&lt;ground_speed&gt;561&lt;/ground_speed&gt;&lt;heading&gt;94&lt;/heading&gt;&lt;heading_name&gt;East&lt;/heading_name&gt;&lt;waypoints&gt;&lt;/waypoints&gt;&lt;date&gt;2018-03-06T15:42:47+00:00&lt;/date&gt;&lt;/aircraft&gt;&lt;/aircrafts&gt;&lt;/flightairmap&gt;" doc:name="Set Payload"/>
+        <json:xml-to-json-transformer doc:name="XML to JSON"/>
+    </flow>
+</mule>

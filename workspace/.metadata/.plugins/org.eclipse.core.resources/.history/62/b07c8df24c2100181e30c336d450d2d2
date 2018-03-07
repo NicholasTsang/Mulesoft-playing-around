@@ -1,0 +1,8 @@
+
+<html>
+<form action="http://localhost/5001"
+city:<input name=city>
+<input type="submit">
+</form>
+
+</html>

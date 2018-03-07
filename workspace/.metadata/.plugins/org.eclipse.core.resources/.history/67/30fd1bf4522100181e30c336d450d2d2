@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+    <http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="5000" doc:name="HTTP Listener Configuration"/>
+    <http:request-config name="HTTP_Request_Configuration"  host="localhost" doc:name="HTTP Request Configuration" port="5010"/>
+    <http:listener-config name="HTTP_Listener_Configuration1" host="localhost" port="5001" doc:name="HTTP Listener Configuration"/>
+    <http:request-config name="HTTP_Request_Configuration2" host="localhost" port="5010" doc:name="HTTP Request Configuration"/>
+    <flow name="multiple-httpsFlow1">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/" doc:name="HTTP"/>
+        <parse-template location="City.html" doc:name="Parse Template"/>
+    </flow>
+    <flow name="multiple-httpsFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration1" path="/" doc:name="HTTP"/>
+        <custom-transformer class="ProcessMessage" doc:name="Java"/>
+        <choice doc:name="Choice">
+            <when expression="#[message.outboundProperties.cityname=='london']">
+                <logger message="londonnnnnnnnnnnnnnnnnnn" level="INFO" doc:name="Logger"/>
+                <http:request config-ref="HTTP_Request_Configuration2" path="/" method="GET" doc:name="HTTP"/>
+                <object-to-string-transformer doc:name="Object to String"/>
+            </when>
+            <otherwise>
+                <set-payload value="nothing to diopalsu" doc:name="Set Payload"/>
+            </otherwise>
+        </choice>
+    </flow>
+</mule>

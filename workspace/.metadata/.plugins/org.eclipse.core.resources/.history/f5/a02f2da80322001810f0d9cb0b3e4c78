@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html >
+ <head>
+  
+   <title>Data Options</title>
+   
+ </head>
+ 
+ <body>
+ 
+   <form method="POST" action="http://localhost:5001">
+ 
+     <p><label for="dataOptions>Your User name:</label> <div>
+     <input type="text" id="dataOptions" name="dataOptions" /> </div> </p> 
+     
+     
+     <p><input type="submit"  value="Submit" /></p>
+ 
+   </form>
+ 
